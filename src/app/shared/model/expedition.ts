@@ -1,0 +1,33 @@
+export interface Expedition {
+    Dom: Number;
+    Fes: Number;
+    Jue: Number;
+    Lab: Number;
+    Lec: Number;
+    Lun: Number;
+    Mar: Number;
+    Mie: Number;
+    Sab: Number;
+    Vie: Number;
+    VisFes: Number;
+    anden: String;
+    estado: String;
+    fin_periodo: String;
+    hora_llegada: String;
+    hora_salida: String;
+    id_cliente: String;
+    id_expedicion: String;
+    id_linea: String;
+    id_operador: String;
+    id_parada: String;
+    id_periodo: String;
+    id_trayecto: String;
+    inicio_periodo: String;
+    nombre: String;
+    nombre_periodo: String;
+    nombre_ticket: String;
+    observaciones: String;
+    orden: String;
+    representacion: String;
+    taquillas: String;
+}
