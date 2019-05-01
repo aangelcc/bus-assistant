@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { BusScheduleComponent } from './bus-schedule/bus-schedule.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BusScheduleComponent
   ],
   imports: [
     BrowserModule,

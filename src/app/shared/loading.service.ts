@@ -15,7 +15,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
         this.isAppLoading$ = this.loadingBehaviorSubject.asObservable();
     }
 
-    setAppLoadingStatus(isLoading: boolean): void{
+    setAppLoadingStatus(isLoading: boolean): void {
         this.loadingBehaviorSubject.next(isLoading);
     }
 

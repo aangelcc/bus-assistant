@@ -16,7 +16,7 @@ import { DestinationInfo } from './model/destination-info';
         return this.http.get<Destination[]>(destinationsEndpoint);
     }
 
-    retrieveDestinationInfo(destinationId: Number): Observable<DestinationInfo> {
+    retrieveDestinationInfo(destinationId: number): Observable<DestinationInfo> {
         return this.http.get<DestinationInfo>(destinationInfoEndpoint + `?id=${destinationId}&publico=1`);
     }
 
