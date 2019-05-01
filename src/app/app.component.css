@@ -4,7 +4,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,9 +12,40 @@
 }
 
 .loader {
-    min-width: 50%;
+    min-width: 30%;
     display: inline-block;
   }
+
+.vertically-centered {
+    display: flex;
+    align-items: center;
+    height: 70%;
+}
+
+.vertically-centered > div {
+    text-align: center;
+    width: 100%;
+}
+
+.logo-container{
+    display: inline-block;
+    min-width: 20%;
+}
+
+.page-header {
+    background-image: url("/assets/header.jpg");
+    background-size: auto 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  height: 25%;
+  display: flex;
+    align-items: center;
+}
+
+.page-header > div {
+    margin: 1%;
+    display: inline-block;
+}
 
 /* CSS Transforms and Animation related things */
 svg {
@@ -59,3 +90,37 @@ svg path {
 .p5 {
     animation-delay: 0s;  
 }
+
+/* Flags an other stuff */
+.flag {
+background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 4rem;
+  height: 3rem;
+  box-shadow: 0 0 0.5rem 0 rgba(0,0,0,0.75);
+}
+
+.flag-es {
+   background-image: url("/assets/es.svg"); 
+}
+
+.flag-gb {
+    background-image: url("/assets/gb.svg"); 
+ }
+
+ .flag-fr {
+    background-image: url("/assets/fr.svg"); 
+ }
+
+ .flag-it {
+    background-image: url("/assets/it.svg"); 
+ }
+
+ .flag-de {
+    background-image: url("/assets/de.svg"); 
+ }
+
+ .flag-pl {
+    background-image: url("/assets/pl.svg"); 
+ }
