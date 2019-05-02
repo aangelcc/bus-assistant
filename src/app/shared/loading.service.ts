@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -12,7 +13,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
     constructor() {
         this.loadingBehaviorSubject = new BehaviorSubject<boolean>(false);
-        this.isAppLoading$ = this.loadingBehaviorSubject.asObservable();
+        this.isAppLoading$ = this.loadingBehaviorSubject.asObservable().pipe(delay(0));
     }
 
     setAppLoadingStatus(isLoading: boolean): void {

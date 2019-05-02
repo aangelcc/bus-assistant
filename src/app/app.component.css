@@ -16,22 +16,6 @@
     display: inline-block;
   }
 
-.vertically-centered {
-    display: flex;
-    align-items: center;
-    height: 70%;
-}
-
-.vertically-centered > div {
-    text-align: center;
-    width: 100%;
-}
-
-.logo-container{
-    display: inline-block;
-    min-width: 20%;
-}
-
 .page-header {
     background-image: url("/assets/header.jpg");
     background-size: auto 100%;
@@ -48,11 +32,7 @@
 }
 
 /* CSS Transforms and Animation related things */
-svg {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-}
+
 
 /* Animacion de escalado */
 @keyframes beating{

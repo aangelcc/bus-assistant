@@ -39,7 +39,7 @@ export class BusScheduleComponent implements OnChanges, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this.busScheduleSubscription != null){
+        if (this.busScheduleSubscription != null) {
             this.busScheduleSubscription.unsubscribe();
         }
     }

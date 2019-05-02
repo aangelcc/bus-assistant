@@ -5,3 +5,20 @@ html, body {
     height: 100%;
     margin: 0;
 }
+
+svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.vertically-centered {
+    display: flex;
+    align-items: center;
+    height: 70%;
+}
+
+.vertically-centered > div {
+    text-align: center;
+    width: 100%;
+}
