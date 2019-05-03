@@ -78,4 +78,8 @@ export class BusScheduleComponent implements OnChanges, OnDestroy {
     private goHome(): void {
         this.router.navigate(['/welcome']);
     }
+
+    private goArrivals($element): void {
+        $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }
 }

@@ -15,10 +15,11 @@ svg {
 .vertically-centered {
     display: flex;
     align-items: center;
-    height: 70%;
+    min-height: 70%;
 }
 
 .vertically-centered > div {
     text-align: center;
     width: 100%;
+    min-height: 0;
 }

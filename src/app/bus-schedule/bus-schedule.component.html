@@ -1,15 +1,21 @@
 <div class="vertically-centered" *ngIf="dataFetchingFailed">
-    <div class="alert alert-primary" role="alert">
-        ¡Vaya! No se ha podido encontrar información para esta ruta...
-    </div>
-    <div class="centered-button">
-        <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+    <div>
+        <div class="centered-button">
+            <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+        </div>
+        <div class="alert alert-primary" role="alert">
+            ¡Vaya! No se ha podido encontrar información para esta ruta...
+        </div>
+        <div class="centered-button">
+            <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+        </div>
     </div>
 </div>
 
 <div *ngIf="!dataFetchingFailed && destinationInfo" class="mt-3 mb-4">
     <div class="centered-button mb-3">
         <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="goArrivals(arrivals)">Ir a Vueltas</button>
     </div>
     <h1>🚍 Málaga ➡️ {{ destinationName }}</h1>
 
@@ -19,12 +25,12 @@
 
     <hr>
 
-    <h1>🚍 {{ destinationName }} ➡️ Málaga</h1>
+    <h1 #arrivals>🚍 {{ destinationName }} ➡️ Málaga</h1>
 
     <div class="table-margin">
         <app-schedule-table [expeditions]="destinationInfo?.datosVuelta"></app-schedule-table>
     </div>
     <div class="centered-button">
-            <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
-        </div>
+        <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+    </div>
 </div>

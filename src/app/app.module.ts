@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BusScheduleComponent } from './bus-schedule/bus-schedule.component';
 import { BusInfoComponent } from './bus-info/bus-info.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { appRoutes } from './routes';
+import { appRoutes, routerOptions } from './routes';
 import { ScheduleTableComponent } from './schedule-table/schedule-table.component';
 import { SafeHtmlPipe } from './shared/safe-html.pipe';
 
@@ -22,7 +22,7 @@ import { SafeHtmlPipe } from './shared/safe-html.pipe';
     SafeHtmlPipe
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, routerOptions),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule

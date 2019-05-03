@@ -26,7 +26,7 @@ export class AppComponent {
 
   constructor(private loadingService: LoadingService) { }
 
-  toggleLoading(value: boolean): void{
+  toggleLoading(value: boolean): void {
     this.loadingService.setAppLoadingStatus(value);
   }
 
