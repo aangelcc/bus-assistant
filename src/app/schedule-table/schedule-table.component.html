@@ -1,0 +1,22 @@
+<table class="table">
+        <thead class="thead-dark table-striped">
+            <tr>
+                <th scope="col">🕒 Salida</th>
+                <th scope="col">Andén previsto</th>
+                <th scope="col">🕔 Llegada</th>
+                <th scope="col">Compañía</th>
+                <th scope="col">Frecuencia</th>
+                <th scope="col">Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let expedition of expeditions">
+                <th scope="row">{{ expedition.hora_salida }}</th>
+                <td>{{ expedition.anden }}</td>
+                <td>{{ expedition.hora_llegada }}</td>
+                <td>{{ expedition.nombre_ticket }}</td>
+                <td><span [innerHtml]="expedition.representacion | safeHtml" class="monospace-font"></span></td>
+                <td>{{ expedition.observaciones }}</td>
+            </tr>
+        </tbody>
+    </table>

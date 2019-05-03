@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChange, OnDestroy } from '@angular/c
 import { LoadingService } from '../shared/loading.service';
 import { DestinationInfo } from '../shared/model/destination-info';
 import { InfoBusService } from '../shared/info-bus.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-bus-schedule',
@@ -14,9 +15,13 @@ export class BusScheduleComponent implements OnChanges, OnDestroy {
 
     destinationInfo: DestinationInfo;
 
+    destinationName = '?';
+
+    dataFetchingFailed = false;
+
     private busScheduleSubscription: any;
 
-    constructor(private loadingService: LoadingService, private infoBusService: InfoBusService) {
+    constructor(private loadingService: LoadingService, private infoBusService: InfoBusService, private router: Router) {
         this.routeId = '';
         this.destinationInfo = null;
     }
@@ -32,6 +37,7 @@ export class BusScheduleComponent implements OnChanges, OnDestroy {
 
                     if (propValue && propValue !== '') {
                     this.updateRouteInfo(propValue);
+                    this.updateRouteName(propValue);
                     }
                 }
             }
@@ -50,10 +56,26 @@ export class BusScheduleComponent implements OnChanges, OnDestroy {
         .subscribe((data: DestinationInfo) => {
             this.loadingService.setAppLoadingStatus(false);
             this.destinationInfo = data;
+
+            if (!data || (!data.datosIda && !data.datosVuelta)) {
+                this.dataFetchingFailed = true;
+            }
         },
-        error => console.log('Oh vaya! Error obteniendo información...')
+        error => {
+            console.log('Oh vaya! Error obteniendo información...');
+            this.loadingService.setAppLoadingStatus(false);
+            this.dataFetchingFailed = true;
+        }
         );
     }
 
+    private updateRouteName(routeId: string) {
+        this.infoBusService.retrieveDestinationNameFromStringId(routeId).subscribe((data: string) => {
+            this.destinationName = data;
+        }, error => { this.dataFetchingFailed = true; });
+    }
 
+    private goHome(): void {
+        this.router.navigate(['/welcome']);
+    }
 }

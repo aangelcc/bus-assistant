@@ -10,7 +10,7 @@ export class BusInfoComponent implements OnInit{
 
     routeId: string;
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.routeId = this.route.snapshot.paramMap.get('id');

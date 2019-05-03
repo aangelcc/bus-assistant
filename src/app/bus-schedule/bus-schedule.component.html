@@ -1,3 +1,30 @@
-<h1>Ida:</h1>
+<div class="vertically-centered" *ngIf="dataFetchingFailed">
+    <div class="alert alert-primary" role="alert">
+        ¡Vaya! No se ha podido encontrar información para esta ruta...
+    </div>
+    <div class="centered-button">
+        <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+    </div>
+</div>
 
-<h1>Vuelta:</h1>
+<div *ngIf="!dataFetchingFailed && destinationInfo" class="mt-3 mb-4">
+    <div class="centered-button mb-3">
+        <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+    </div>
+    <h1>🚍 Málaga ➡️ {{ destinationName }}</h1>
+
+    <div class="table-margin">
+        <app-schedule-table [expeditions]="destinationInfo?.datosIda"></app-schedule-table>
+    </div>
+
+    <hr>
+
+    <h1>🚍 {{ destinationName }} ➡️ Málaga</h1>
+
+    <div class="table-margin">
+        <app-schedule-table [expeditions]="destinationInfo?.datosVuelta"></app-schedule-table>
+    </div>
+    <div class="centered-button">
+            <button type="button" class="btn btn-info" (click)="goHome()">Nueva consulta</button>
+        </div>
+</div>
