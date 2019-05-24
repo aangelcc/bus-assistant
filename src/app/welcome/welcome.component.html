@@ -21,9 +21,9 @@
             <h2>¡Hola!</h2>
             <h2>¿Qué quieres saber?</h2>
             {{ response | json }}
-            {{ response | json }}
-            {{ response | json }}
-            {{ response | json }}
+            <hr>
+            <button (click)="startRecognition()">Start recognition</button>
+            {{ speechResult }}
         </div>
     </div>
 </div>
