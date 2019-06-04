@@ -17,6 +17,9 @@ export class NlpService {
   constructor(private http: HttpClient, private infoBusService: InfoBusService) { }
 
   public getResponse(textQuery: string) {
+
+    textQuery = textQuery.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
+
     const data = {
       query : textQuery,
       lang: 'es',

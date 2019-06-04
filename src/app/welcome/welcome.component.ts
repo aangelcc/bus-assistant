@@ -3,6 +3,7 @@ import { NlpService } from '../shared/nlp.service';
 import { SpeechRecognitionService } from '../shared/speech-recognition.service';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-welcome',
@@ -17,7 +18,7 @@ export class WelcomeComponent implements OnInit {
 
     speechResult = 'Resultado';
 
-    constructor(private nlpService: NlpService, private speechRecognitionService: SpeechRecognitionService, private ngZone: NgZone) {
+    constructor(private nlpService: NlpService, private speechRecognitionService: SpeechRecognitionService, private ngZone: NgZone, private router: Router,) {
         this.speechObservable = speechRecognitionService.listenSpeech();
     }
 
@@ -32,20 +33,24 @@ export class WelcomeComponent implements OnInit {
             map(recognitionResult => {
                 let recognizedName = '';
 
-                if (recognitionResult.hasOwnProperty('parameters') && recognitionResult['parameters'].hasOwnProperty('geo-city')) {
-                    recognizedName = recognitionResult['parameters']['geo-city'];
+                if (recognitionResult.hasOwnProperty('result') && recognitionResult['result'].hasOwnProperty('parameters') && recognitionResult['result']['parameters'].hasOwnProperty('geo-city')) {
+                    recognizedName = recognitionResult['result']['parameters']['geo-city'];
                 }
+                console.log('Desde el map: '+recognizedName);
                 return recognizedName;
             }),
-            mergeMap(geoCity => this.nlpService.destinationStringIdFromRecognizedDestinationName(geoCity))).subscribe(result => {
-                this.ngZone.run(() => {
-                    this.speechResult = result;
-                });
+            mergeMap(geoCity => this.nlpService.destinationStringIdFromRecognizedDestinationName(geoCity)));
 
-                console.log('Received result: ' + result);
-            },
-                error => console.log('Error!'),
-                () => console.log('completed'));;
+        fullSubscription.subscribe(result => {
+            this.ngZone.run(() => {
+                this.speechResult = result;
+                this.router.navigate(['/route/' + result]);
+            });
+
+            // console.log('Received result: ' + result);
+        },
+            error => console.log('Error!'),
+            () => console.log('completed'));;
     }
 
 }
