@@ -33,13 +33,13 @@ export class WelcomeComponent implements OnInit {
             map(recognitionResult => {
                 let recognizedName = '';
 
-                if (recognitionResult.hasOwnProperty('result') && recognitionResult['result'].hasOwnProperty('parameters') && recognitionResult['result']['parameters'].hasOwnProperty('geo-city')) {
-                    recognizedName = recognitionResult['result']['parameters']['geo-city'];
+                if (recognitionResult.hasOwnProperty('result') && recognitionResult['result'].hasOwnProperty('parameters') && recognitionResult['result']['parameters'].hasOwnProperty('CiudadEstabus')) {
+                    recognizedName = recognitionResult['result']['parameters']['CiudadEstabus'];
                 }
                 console.log('Desde el map: '+recognizedName);
                 return recognizedName;
-            }),
-            mergeMap(geoCity => this.nlpService.destinationStringIdFromRecognizedDestinationName(geoCity)));
+            }));
+            // mergeMap(geoCity => this.nlpService.destinationStringIdFromRecognizedDestinationName(geoCity)));
 
         fullSubscription.subscribe(result => {
             this.ngZone.run(() => {
